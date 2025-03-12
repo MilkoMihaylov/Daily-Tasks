@@ -7,7 +7,7 @@ interface TaskContainerProps {
   taskStatus: 'tasks' | 'completed' | 'declined';
 }
 
-const TaskContainer: React.FC<TaskContainerProps> = ({ title, tasks, taskStatus }) => {
+function TaskContainer ({ title, tasks, taskStatus }){
   const dispatch = useDispatch();
 
   const handleComplete = (id: number) => {
