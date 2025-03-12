@@ -7,7 +7,7 @@ interface TaskContainerProps {
   taskStatus: 'tasks' | 'completed' | 'declined';
 }
 
-function TaskContainer ({ title, tasks, taskStatus }){
+function TaskContainer ({ title, tasks, taskStatus }: TaskContainerProps){
   const dispatch = useDispatch();
 
   const handleComplete = (id: number) => {
