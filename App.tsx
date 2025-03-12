@@ -34,7 +34,7 @@ const App = () => {
             style={{
               height: '100%',
               width: `${progressPercentage}%`,
-              backgroundColor: progressPercentage === 100 ? 'green' : 'orange',
+              backgroundColor: progressPercentage >= 100 ? 'green' : 'orange',
               transition: 'width 0.5s ease',
             }}
           />
