@@ -22,15 +22,13 @@ const App = () => {
 
       <div className='status-style'>
         <h3>{totalCompleted >= quota ? "Your daily task quota is complete" : `Completed: ${totalCompleted} / ${quota}`}</h3>
-        <div
-          className='status-positioning'
-          style={{
-            height: '100%',
-            width: `${progressPercentage}%`,
-            backgroundColor: progressPercentage >= 100 ? 'green' : 'orange',
-            transition: 'width 0.5s ease',
-          }}
-        ></div>
+        <div className='status-positioning'
+        >
+          <div style={{width: `${progressPercentage}%`}}
+          className={`progress-bar ${progressPercentage >= 100 ? 'completed' : ''}`} 
+          >
+          </div>
+        </div>
       </div>
     </div>
   );
