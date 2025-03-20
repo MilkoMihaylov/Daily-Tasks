@@ -30,8 +30,7 @@ const App = () => {
             backgroundColor: progressPercentage >= 100 ? 'green' : 'orange',
             transition: 'width 0.5s ease',
           }}
-        ><div/>
-        </div>
+        ></div>
       </div>
     </div>
   );
