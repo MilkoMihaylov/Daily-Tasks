@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import TaskContainer from './components/TaskContainer';
 import { RootState } from './store';
+import './App.css'
 
 const App = () => {
   const tasks = useSelector((state: RootState) => state.tasks.tasks);
@@ -12,32 +13,24 @@ const App = () => {
   const progressPercentage = (totalCompleted / quota) * 100;
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', flexDirection: 'column', alignItems: 'center' }}>
-      <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginBottom: '20px' }}>
+    <div className='container-style'>
+      <div className='cells-style'>
         <TaskContainer title="Tasks" tasks={tasks} taskStatus="tasks" />
         <TaskContainer title="Completed" tasks={completed} taskStatus="completed" />
         <TaskContainer title="Declined" tasks={declined} taskStatus="declined" />
       </div>
 
-      <div style={{ width: '30%', marginTop: '20px' }}>
+      <div className='status-style'>
         <h3>{totalCompleted >= quota ? "Your daily task quota is complete" : `Completed: ${totalCompleted} / ${quota}`}</h3>
         <div
+          className='status-positioning'
           style={{
-            height: '20px',
-            width: '100%',
-            backgroundColor: '#e0e0e0',
-            borderRadius: '5px',
-            overflow: 'hidden',
+            height: '100%',
+            width: `${progressPercentage}%`,
+            backgroundColor: progressPercentage >= 100 ? 'green' : 'orange',
+            transition: 'width 0.5s ease',
           }}
-        >
-          <div
-            style={{
-              height: '100%',
-              width: `${progressPercentage}%`,
-              backgroundColor: progressPercentage >= 100 ? 'green' : 'orange',
-              transition: 'width 0.5s ease',
-            }}
-          />
+        ><div/>
         </div>
       </div>
     </div>
