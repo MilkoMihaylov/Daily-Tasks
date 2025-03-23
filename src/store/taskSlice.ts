@@ -45,9 +45,18 @@ const taskSlice = createSlice({
         state.tasks = state.tasks.filter(t => t.id !== taskId);
       }
     },
+    undoTaskFromCompleted(state, action: PayloadAction<number>) {
+      const taskId = action.payload;
+      const task = state.completed.find(t => t.id === taskId);
+      if (task) {
+        state.tasks.push(task);
+        state.completed = state.completed.filter(t => t.id !== taskId);
+      }
+
+  }
   },
 });
 
-export const { completeTask, declineTask } = taskSlice.actions;
+export const { completeTask, declineTask, undoTaskFromCompleted } = taskSlice.actions;
 
 export default taskSlice.reducer;
